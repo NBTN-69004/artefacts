@@ -5,60 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Artefact pédagogique</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-
 <style>
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #0e0e0e;
-  color: #f5f5f5;
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.container {
-  max-width: 700px;
-  width: 100%;
-}
-
-.card {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  padding: 2rem;
-}
-
-h1 {
-  font-size: 1.8rem;
-}
-
-.badge {
-  font-size: 0.7rem;
-  color: #f5e642;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.question {
-  margin: 1.5rem 0;
-  font-size: 1.2rem;
-}
-
-.answers button {
-  display: block;
-  width: 100%;
-  margin-bottom: 0.5rem;
-  padding: 0.8rem;
+  font-family: Arial;
   background: #111;
-  border: 1px solid #333;
   color: #fff;
-  cursor: pointer;
+  padding: 20px;
 }
-
-.answers button:hover {
-  border-color: #f5e642;
+button {
+  display:block;
+  margin:10px 0;
+  padding:10px;
+  width:100%;
 }
+.correct { background: green; }
+.wrong { background: red; }
+</style>
+</head>
 
-.correct {
-  background: #3ecf8e !important;
+<body>
+
+<h2>🔥 Situation : feu d’appartement</h2>
+
+<p>Quelle est votre priorité ?</p>
+
+<button onclick="check(this,false)">Entrer immédiatement</button>
+<button onclick="check(this,true)">Reconnaissance</button>
+<button onclick="check(this,false)">Attendre</button>
+
+<p id="feedback"></p>
+
+<script>
+function check(btn, correct){
+  if(correct){
+    btn.className="correct";
+    document.getElementById("feedback").innerText="Bonne réponse 👍";
+  } else {
+    btn.className="wrong";
+    document.getElementById("feedback").innerText="Mauvaise réponse ❌";
+  }
+}
+</script>
+
+</body>
+</html>
