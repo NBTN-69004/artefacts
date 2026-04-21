@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Digital</title>
+    <title>Artefacts</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         :root { --bg: #1a1c24; --surface: #23272e; --accent: #5865F2; --text: #ffffff; }
@@ -18,7 +18,7 @@
 <body>
     <div class="card">
         <img src="https://i.postimg.cc/8PzL7GfL/image.png" class="logo" alt="Logo">
-        <h1>CAMPUS DIGITAL</h1>
+        <h1>Artefacts</h1>
         <p>"L'échec est un diplôme"</p>
         <div style="border-top: 1px solid #3f4455; margin: 20px 0; padding-top: 20px;">
             <p>Plateforme en cours de déploiement...</p>
