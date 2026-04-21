@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artefact pédagogique</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0e0e0e;
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 700px;
+  width: 100%;
+}
+
+.card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+.badge {
+  font-size: 0.7rem;
+  color: #f5e642;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.question {
+  margin: 1.5rem 0;
+  font-size: 1.2rem;
+}
+
+.answers button {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.8rem;
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.answers button:hover {
+  border-color: #f5e642;
+}
+
+.correct {
+  background: #3ecf8e !important;
+  color: #000;
+}
+
+.wrong {
+  background: #ff4d4d !important;
+}
+
+.feedback {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.next {
+  margin-top: 1.5rem;
+  padding: 0.7rem;
+  background: #f5e642;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <div class="badge">Situation pédagogique</div>
+
+    <h1>🔥 Intervention incendie : prise de décision</h1>
+
+    <div class="question" id="question">
+      Vous arrivez sur un feu d’appartement. Quelle est votre priorité ?
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <button class="next" onclick="nextQuestion()">Question suivante</button>
+
+  </div>
+</div>
+
+<script>
+
+const quiz = [
+  {
+    q: "Vous arrivez sur un feu d’appartement. Quelle est votre priorité ?",
+    a: [
+      { text: "Entrer immédiatement", correct: false },
+      { text: "Reconnaissance et sécurisation", correct: true },
+      { text: "Attendre les renforts", correct: false }
+    ],
+    feedback: "👉 La reconnaissance est essentielle pour éviter la mise en danger inutile."
+  },
+  {
+    q: "Un équipier est en difficulté, que faites-vous ?",
+    a: [
+      { text: "Continuer la mission", correct: false },
+      { text: "Déclencher procédure de secours", correct: true },
+      { text: "Ignorer", correct: false }
+    ],
+    feedback: "👉 La sécurité de l’équipe est prioritaire."
+  }
+];
+
+let current = 0;
+
+function loadQuestion() {
+  const q = quiz[current];
+  document.getElementById('question').textContent = q.q;
+
+  const answers = document.getElementById('answers');
+  answers.innerHTML = '';
+
+  document.getElementById('feedback').textContent = '';
+
+  q.a.forEach(a => {
+    const btn = document.createElement('button');
+    btn.textContent = a.text;
+
+    btn.onclick = () => {
+      btn.classList.add(a.correct ? 'correct' : 'wrong');
+      document.getElementById('feedback').textContent = q.feedback;
+    };
+
+    answers.appendChild(btn);
+  });
+}
+
+function nextQuestion() {
+  current = (current + 1) % quiz.length;
+  loadQuestion();
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
